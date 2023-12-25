@@ -16,7 +16,7 @@
 $(document).ready(function(){
   // Set background image with size using shinyjs
   Shiny.addCustomMessageHandler("set_background", function(message) {
-    document.body.style.backgroundImage = "url(\'https://i.pinimg.com/564x/70/b7/11/70b71114a4074364a6412d205a551e39.jpg\')";
+    document.body.style.backgroundImage = "url('background.jpeg')";
     document.body.style.width = "100%";
     document.body.style.height = "100%";
     document.body.style.backgroundSize = "cover";
@@ -52,9 +52,9 @@ $(document).ready(function(){
 function shinyServer() {
   Shiny.addCustomMessageHandler("render_gif", function(message) {
     if (message.answer === "yes") {
-      $("#gifOutput").html('<img src="https://media4.giphy.com/media/toYIS95xETUPLmU9WP/200w.gif?cid=6c09b952uoagrq3edqz7fn3ytpe3kv2nrnlellcb9s307nx7&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Yes GIF" style="width: 500px; height: 500px;">');
+      $("#gifOutput").html('<img src="shrek.gif" alt="Yes GIF" style="width: 500px; height: 500px;">');
     } else if (message.answer === "no") {
-      $("#gifOutput").html('<img src="https://media.tenor.com/HFTGp2mOONcAAAAM/cry-crying.gif" alt="No GIF" style="width: 500px; height: 500px;">');
+      $("#gifOutput").html('<img src="sad.gif" alt="No GIF" style="width: 500px; height: 500px;">');
     }
   });
 }
