@@ -8,21 +8,35 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/shinyjs@2.0.0"></script>
 </head>
 <body>
 
 <script>
 $(document).ready(function(){
-  // Set background image with size using shinyjs
-  Shiny.addCustomMessageHandler("set_background", function(message) {
-    document.body.style.backgroundImage = "url('background.jpeg')";
-    document.body.style.width = "100%";
-    document.body.style.height = "100%";
-    document.body.style.backgroundSize = "cover";
-    document.body.style.backgroundRepeat = "no-repeat";
+  // Set background image
+  document.body.style.backgroundImage = "url('background.jpeg')";
+  document.body.style.width = "100%";
+  document.body.style.height = "100%";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundRepeat = "no-repeat";
+});
+
+$(document).ready(function(){
+  // Trigger events on button click
+  $("#submitBtn").click(function(){
+    var answer = $("input[name='answer']:checked").val();
+    renderGif(answer);
   });
 });
+
+function renderGif(answer) {
+  var gifOutput = $("#gifOutput");
+  if (answer === "yes") {
+    gifOutput.html('<img src="shrek.gif" alt="Yes GIF" style="width: 500px; height: 500px;">');
+  } else if (answer === "no") {
+    gifOutput.html('<img src="sad.gif" alt="No GIF" style="width: 500px; height: 500px;">');
+  }
+}
 </script>
 
 <div id="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
@@ -37,28 +51,6 @@ $(document).ready(function(){
   <br>
   <div id="gifOutput" style="text-align: center; margin-top: 50px;"></div>
 </div>
-
-<script>
-$(document).ready(function(){
-  // Trigger Shiny events on button click
-  $("#submitBtn").click(function(){
-    var answer = $("input[name='answer']:checked").val();
-    Shiny.onInputChange("answer", answer);
-    Shiny.setInputValue("submitBtn", Math.random()); // To trigger observeEvent
-  });
-});
-
-// Shiny server logic
-function shinyServer() {
-  Shiny.addCustomMessageHandler("render_gif", function(message) {
-    if (message.answer === "yes") {
-      $("#gifOutput").html('<img src="shrek.gif" alt="Yes GIF" style="width: 500px; height: 500px;">');
-    } else if (message.answer === "no") {
-      $("#gifOutput").html('<img src="sad.gif" alt="No GIF" style="width: 500px; height: 500px;">');
-    }
-  });
-}
-</script>
 
 </body>
 </html>
