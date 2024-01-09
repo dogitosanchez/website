@@ -32,7 +32,7 @@ $(document).ready(function(){
 function renderGif(answer) {
   var gifOutput = $("#gifOutput");
   if (answer === "yes") {
-    gifOutput.html('<img src="antonin.jpeg" alt="Yes GIF" style="width: 500px; height: 500px;">');
+    gifOutput.html('<img src="antonin.jpeg" alt="Yes GIF" style="width: 300px; height: 500px;">');
   } else if (answer === "no") {
     gifOutput.html('<img src="sadaf.gif" alt="No GIF" style="width: 500px; height: 500px;">');
   }
@@ -42,7 +42,7 @@ function renderGif(answer) {
 
 <div id="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
   <form id="questionForm">
-    <p style="font-family: 'Lobster', cursive; font-size: 75px; text-align: center; color: #333;">"Voudrais-tu te remettre avec ton ex si nous nous disputions moins ?"</p>
+    <p style="font-family: 'Lobster', cursive; font-size: 50px; text-align: center; color: #333;">"Voudrais-tu te remettre avec ton ex si nous nous disputions moins ?"</p>
     <label for="answer" style="font-size: 30px; font-family: 'Lobster', cursive;">Choisis une option:</label>
     <input type="radio" name="answer" id="answer_yes" value="yes" inline="true"> <label for="answer_yes">Oui</label>
     <input type="radio" name="answer" id="answer_no" value="no" inline="true"> <label for="answer_no">Non</label>
